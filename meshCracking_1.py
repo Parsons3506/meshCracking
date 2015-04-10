@@ -19,7 +19,7 @@ def crackpolygon(meshes, count):
                 #print "Cool"
                 centroid = rs.MeshAreaCentroid(mesh)
                 normals = rs.MeshFaceNormals(mesh)
-                centroid = rs.PointAdd(centroid, normals[0]*count*.7)
+                centroid = rs.PointAdd(centroid, normals[0]*(count/5))
                 vertices = rs.MeshVertices(mesh)
                 for i in range(1,len(vertices)):
                     newVertices = []
@@ -38,8 +38,7 @@ def crackpolygon(meshes, count):
                 newMesh = rs.AddMesh(newVertices, newFaces)
                 newMeshes.append(newMesh)
                 
-        count = count - 1
-        return crackpolygon(newMeshes, count)
+        return crackpolygon(newMeshes, count-1)
 
 
 def main():
